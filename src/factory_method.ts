@@ -1,37 +1,39 @@
-interface Ship {
-  operation(): void;
-}
-
-class WhiteShip implements Ship {
-  operation(): void {
-    console.log("WhiteShip");
+namespace factory_method {
+  interface Ship {
+    operation(): void;
   }
-}
 
-class BlackShip implements Ship {
-  operation(): void {
-    console.log("BlackShip");
+  class WhiteShip implements Ship {
+    operation(): void {
+      console.log("WhiteShip");
+    }
   }
-}
 
-interface ShipFactory {
-  createShip(): Ship;
-}
-
-class WhiteShipFactory implements ShipFactory {
-  createShip(): WhiteShip {
-    return new WhiteShip();
+  class BlackShip implements Ship {
+    operation(): void {
+      console.log("BlackShip");
+    }
   }
-}
 
-class BlackShipFactory implements ShipFactory {
-  createShip(): BlackShip {
-    return new BlackShip();
+  interface ShipFactory {
+    createShip(): Ship;
   }
+
+  class WhiteShipFactory implements ShipFactory {
+    createShip(): WhiteShip {
+      return new WhiteShip();
+    }
+  }
+
+  class BlackShipFactory implements ShipFactory {
+    createShip(): BlackShip {
+      return new BlackShip();
+    }
+  }
+
+  const whiteShip = new WhiteShipFactory().createShip();
+  const blackShip = new BlackShipFactory().createShip();
+
+  whiteShip.operation();
+  blackShip.operation();
 }
-
-const whiteShip = new WhiteShipFactory().createShip();
-const blackShip = new BlackShipFactory().createShip();
-
-whiteShip.operation();
-blackShip.operation();

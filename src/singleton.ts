@@ -1,21 +1,23 @@
-class Singleton {
-  private static instance: Singleton;
+namespace singleton {
+  class Singleton {
+    private static instance: Singleton;
 
-  private constructor() {}
+    private constructor() {}
 
-  public static getInstance(): Singleton {
-    if (!Singleton.instance) {
-      Singleton.instance = new Singleton();
+    public static getInstance(): Singleton {
+      if (!Singleton.instance) {
+        Singleton.instance = new Singleton();
+      }
+      return Singleton.instance;
     }
-    return Singleton.instance;
   }
-}
 
-const s1 = Singleton.getInstance();
-const s2 = Singleton.getInstance();
+  const s1 = Singleton.getInstance();
+  const s2 = Singleton.getInstance();
 
-if (s1 === s2) {
-  console.log("same!");
-} else {
-  console.log("not same!");
+  if (s1 === s2) {
+    console.log("same!");
+  } else {
+    console.log("not same!");
+  }
 }
